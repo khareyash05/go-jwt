@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"os"
+	"strconv"
 
 	middleware "go-jwt/src/middleware"
 	routes "go-jwt/src/routes"
@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	port := 8000
+	port := strconv.Itoa(8000)
 	gin.SetMode(gin.ReleaseMode)
 
 	router := gin.New()
