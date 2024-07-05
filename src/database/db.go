@@ -17,7 +17,7 @@ func Dbinstance() *mongo.Client {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	mongoURI := os.Getenv("MONGODB_URI")
+	mongoURI := os.Getenv("mongodb://jwtMongo:27017/myDatabase")
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoURI))
 	if err != nil {
 		log.Fatal(err)
