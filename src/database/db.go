@@ -17,7 +17,7 @@ func Dbinstance() *mongo.Client {
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
-	mongoURI := os.Getenv("mongodb://jwtMongo:27017/myDatabase")
+	mongoURI := os.Getenv("mongodb://jwtMongo:27017")
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoURI))
 	if err != nil {
 		log.Fatal(err)
@@ -39,7 +39,7 @@ func Dbinstance() *mongo.Client {
 var Client *mongo.Client = Dbinstance()
 
 func OpenCollection(client *mongo.Client, collecionName string) *mongo.Collection {
-	databaseName := os.Getenv("DATABASE_NAME")
+	databaseName := os.Getenv("myDatabase")
 	var collection *mongo.Collection = client.Database(databaseName).Collection(collecionName)
 	return collection
 
