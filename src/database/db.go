@@ -4,20 +4,13 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 	"time"
-
-	"github.com/joho/godotenv"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func Dbinstance() *mongo.Client {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
-	}
-	mongoURI := os.Getenv("mongodb://jwtMongo:27017")
+	mongoURI := "mongodb://jwtMongo:27017"
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoURI))
 	if err != nil {
 		log.Fatal(err)
@@ -39,7 +32,7 @@ func Dbinstance() *mongo.Client {
 var Client *mongo.Client = Dbinstance()
 
 func OpenCollection(client *mongo.Client, collecionName string) *mongo.Collection {
-	databaseName := os.Getenv("myDatabase")
+	databaseName := "myDatabase"
 	var collection *mongo.Collection = client.Database(databaseName).Collection(collecionName)
 	return collection
 
