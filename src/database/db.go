@@ -10,7 +10,7 @@ import (
 )
 
 func Dbinstance() *mongo.Client {
-	mongoURI := "mongodb://jwtMongo:27017"
+	mongoURI := "mongodb://localhost:27017"
 	client, err := mongo.NewClient(options.Client().ApplyURI(mongoURI))
 	if err != nil {
 		log.Fatal(err)
